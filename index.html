@@ -24,7 +24,7 @@
             overflow-x: hidden;
         }
 
-        /* Звёздное небо — множество неподвижных точек */
+        /* Статичные звёзды (фон) */
         body::before {
             content: "";
             position: fixed;
@@ -56,7 +56,6 @@
                 radial-gradient(2px 2px at 810px 60px, #ffffff, rgba(0,0,0,0)),
                 radial-gradient(1px 1px at 850px 20px, #ffffff, rgba(0,0,0,0)),
                 radial-gradient(1px 1px at 890px 100px, #ffffff, rgba(0,0,0,0)),
-                /* Крупные звёзды */
                 radial-gradient(3px 3px at 60px 200px, #d4c4ff, rgba(0,0,0,0)),
                 radial-gradient(3px 3px at 180px 300px, #d4c4ff, rgba(0,0,0,0)),
                 radial-gradient(3px 3px at 340px 250px, #d4c4ff, rgba(0,0,0,0)),
@@ -69,7 +68,7 @@
             pointer-events: none;
         }
 
-        /* Лёгкое мерцание крупных звёзд */
+        /* Мерцание крупных звёзд */
         body::after {
             content: "";
             position: fixed;
@@ -78,13 +77,13 @@
             width: 100%;
             height: 100%;
             background-image: 
-                radial-gradient(3px 3px at 60px 200px, rgba(255,255,255,0.8), transparent),
-                radial-gradient(3px 3px at 180px 300px, rgba(255,255,255,0.8), transparent),
-                radial-gradient(3px 3px at 340px 250px, rgba(255,255,255,0.8), transparent),
-                radial-gradient(3px 3px at 480px 320px, rgba(255,255,255,0.8), transparent),
-                radial-gradient(3px 3px at 640px 280px, rgba(255,255,255,0.8), transparent),
-                radial-gradient(3px 3px at 780px 220px, rgba(255,255,255,0.8), transparent),
-                radial-gradient(4px 4px at 880px 350px, rgba(255,255,255,0.8), transparent);
+                radial-gradient(3px 3px at 60px 200px, rgba(255,255,255,0.9), transparent),
+                radial-gradient(3px 3px at 180px 300px, rgba(255,255,255,0.9), transparent),
+                radial-gradient(3px 3px at 340px 250px, rgba(255,255,255,0.9), transparent),
+                radial-gradient(3px 3px at 480px 320px, rgba(255,255,255,0.9), transparent),
+                radial-gradient(3px 3px at 640px 280px, rgba(255,255,255,0.9), transparent),
+                radial-gradient(3px 3px at 780px 220px, rgba(255,255,255,0.9), transparent),
+                radial-gradient(4px 4px at 880px 350px, rgba(255,255,255,0.9), transparent);
             background-repeat: no-repeat;
             opacity: 0;
             animation: twinkle 3s infinite alternate;
@@ -93,7 +92,7 @@
 
         @keyframes twinkle {
             0% { opacity: 0; }
-            100% { opacity: 0.5; }
+            100% { opacity: 0.6; }
         }
 
         /* Контейнер для падающих звёзд */
@@ -109,27 +108,30 @@
 
         .star {
             position: absolute;
-            width: 2px;
-            height: 2px;
+            width: 3px;
+            height: 3px;
             background: white;
             border-radius: 50%;
-            box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.8);
-            animation: shoot 6s linear infinite;
+            box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.9), 0 0 12px 4px rgba(180, 180, 255, 0.7);
             opacity: 0;
+            animation: shoot 6s linear infinite;
         }
 
-        .star::before {
+        /* Хвост позади звезды */
+        .star::after {
             content: "";
             position: absolute;
             top: 50%;
-            right: 0;
+            right: 3px; /* начинается сразу за звездой */
             width: 120px;
-            height: 1px;
-            background: linear-gradient(to left, rgba(255,255,255,0.6), transparent);
+            height: 2px;
+            background: linear-gradient(to left, rgba(255,255,255,0.8), rgba(180,180,255,0.4), transparent);
             transform: translateY(-50%);
+            border-radius: 1px;
+            box-shadow: 0 0 8px 2px rgba(255,255,255,0.5);
         }
 
-        /* Позиции и задержки для каждой звезды */
+        /* Индивидуальные параметры для каждой звезды */
         .star:nth-child(1) {
             top: 10%;
             left: 80%;
@@ -167,23 +169,24 @@
                 opacity: 0;
                 transform: translate(0, 0) rotate(-25deg);
             }
-            5% {
+            3% {
                 opacity: 1;
             }
             15% {
                 transform: translate(-300px, 200px) rotate(-25deg);
-                opacity: 0.8;
+                opacity: 0.9;
             }
-            25% {
-                transform: translate(-500px, 350px) rotate(-25deg);
+            30% {
+                transform: translate(-600px, 400px) rotate(-25deg);
                 opacity: 0;
             }
             100% {
-                transform: translate(-500px, 350px) rotate(-25deg);
+                transform: translate(-600px, 400px) rotate(-25deg);
                 opacity: 0;
             }
         }
 
+        /* Карточка с ссылками */
         .card {
             position: relative;
             background: rgba(20, 10, 25, 0.75);
@@ -287,7 +290,6 @@
     </style>
 </head>
 <body>
-    <!-- Падающие звёзды -->
     <div class="shooting-stars">
         <div class="star"></div>
         <div class="star"></div>
@@ -303,19 +305,14 @@
         <div class="bio">тень, что слушает тишину</div>
         
         <div class="links">
-            <!-- Telegram -->
             <a href="https://t.me/utrula" target="_blank" rel="noopener" class="link-btn">
                 <span class="icon">✉️</span>
                 <span>Telegram</span>
             </a>
-            
-            <!-- ВКонтакте -->
             <a href="https://vk.com/d_a_r_k_angel" target="_blank" rel="noopener" class="link-btn">
                 <span class="icon">📘</span>
                 <span>ВКонтакте</span>
             </a>
-
-            <!-- GitHub -->
             <a href="https://github.com/Angel-Dark254?preview=true" target="_blank" rel="noopener" class="link-btn">
                 <span class="icon">🐙</span>
                 <span>GitHub</span>
