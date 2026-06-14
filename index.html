@@ -12,10 +12,27 @@
         }
 
         body {
-            /* Глубокий космос + узор из звёзд */
-            background-color: #0a0a12;
+            /* Синее ночное небо */
+            background: radial-gradient(ellipse at bottom, #1b2a4a 0%, #0a1226 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Звёздное небо — множество неподвижных точек */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: 
-                /* Мелкие звёзды (точки) */
                 radial-gradient(1px 1px at 20px 30px, #ffffff, rgba(0,0,0,0)),
                 radial-gradient(1px 1px at 40px 70px, #ffffff, rgba(0,0,0,0)),
                 radial-gradient(1px 1px at 50px 160px, #ffffff, rgba(0,0,0,0)),
@@ -39,7 +56,7 @@
                 radial-gradient(2px 2px at 810px 60px, #ffffff, rgba(0,0,0,0)),
                 radial-gradient(1px 1px at 850px 20px, #ffffff, rgba(0,0,0,0)),
                 radial-gradient(1px 1px at 890px 100px, #ffffff, rgba(0,0,0,0)),
-                /* Крупные звёзды (сияющие) */
+                /* Крупные звёзды */
                 radial-gradient(3px 3px at 60px 200px, #d4c4ff, rgba(0,0,0,0)),
                 radial-gradient(3px 3px at 180px 300px, #d4c4ff, rgba(0,0,0,0)),
                 radial-gradient(3px 3px at 340px 250px, #d4c4ff, rgba(0,0,0,0)),
@@ -49,17 +66,10 @@
                 radial-gradient(4px 4px at 880px 350px, #d4c4ff, rgba(0,0,0,0));
             background-repeat: no-repeat;
             background-attachment: fixed;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-            overflow-x: hidden;
+            pointer-events: none;
         }
 
-        /* Лёгкая анимация мерцания для крупных звёзд (через отдельный слой) */
+        /* Лёгкое мерцание крупных звёзд */
         body::after {
             content: "";
             position: fixed;
@@ -84,6 +94,94 @@
         @keyframes twinkle {
             0% { opacity: 0; }
             100% { opacity: 0.5; }
+        }
+
+        /* Контейнер для падающих звёзд */
+        .shooting-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.8);
+            animation: shoot 6s linear infinite;
+            opacity: 0;
+        }
+
+        .star::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 120px;
+            height: 1px;
+            background: linear-gradient(to left, rgba(255,255,255,0.6), transparent);
+            transform: translateY(-50%);
+        }
+
+        /* Позиции и задержки для каждой звезды */
+        .star:nth-child(1) {
+            top: 10%;
+            left: 80%;
+            animation-delay: 0s;
+            animation-duration: 4s;
+        }
+        .star:nth-child(2) {
+            top: 20%;
+            left: 65%;
+            animation-delay: 2s;
+            animation-duration: 5s;
+        }
+        .star:nth-child(3) {
+            top: 35%;
+            left: 90%;
+            animation-delay: 4s;
+            animation-duration: 3.5s;
+        }
+        .star:nth-child(4) {
+            top: 5%;
+            left: 50%;
+            animation-delay: 1s;
+            animation-duration: 6s;
+        }
+        .star:nth-child(5) {
+            top: 50%;
+            left: 75%;
+            animation-delay: 3.5s;
+            animation-duration: 4.5s;
+        }
+
+        /* Анимация полёта */
+        @keyframes shoot {
+            0% {
+                opacity: 0;
+                transform: translate(0, 0) rotate(-25deg);
+            }
+            5% {
+                opacity: 1;
+            }
+            15% {
+                transform: translate(-300px, 200px) rotate(-25deg);
+                opacity: 0.8;
+            }
+            25% {
+                transform: translate(-500px, 350px) rotate(-25deg);
+                opacity: 0;
+            }
+            100% {
+                transform: translate(-500px, 350px) rotate(-25deg);
+                opacity: 0;
+            }
         }
 
         .card {
@@ -189,6 +287,15 @@
     </style>
 </head>
 <body>
+    <!-- Падающие звёзды -->
+    <div class="shooting-stars">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+
     <div class="card">
         <div class="ornament">⛧ ✦ ⛧</div>
         
