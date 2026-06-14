@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuroko | Link Bio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Глубокий космос + узор из звёзд */
+            background-color: #0a0a12;
+            background-image: 
+                /* Мелкие звёзды (точки) */
+                radial-gradient(1px 1px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 50px 160px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 130px 80px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 160px 120px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 200px 50px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 250px 100px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 280px 30px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 320px 150px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 370px 70px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 400px 20px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 450px 110px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 500px 40px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 530px 160px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 580px 90px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 620px 10px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 670px 130px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 720px 50px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 760px 140px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 810px 60px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 850px 20px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 890px 100px, #ffffff, rgba(0,0,0,0)),
+                /* Крупные звёзды (сияющие) */
+                radial-gradient(3px 3px at 60px 200px, #d4c4ff, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 180px 300px, #d4c4ff, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 340px 250px, #d4c4ff, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 480px 320px, #d4c4ff, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 640px 280px, #d4c4ff, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 780px 220px, #d4c4ff, rgba(0,0,0,0)),
+                radial-gradient(4px 4px at 880px 350px, #d4c4ff, rgba(0,0,0,0));
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Лёгкая анимация мерцания для крупных звёзд (через отдельный слой) */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(3px 3px at 60px 200px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(3px 3px at 180px 300px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(3px 3px at 340px 250px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(3px 3px at 480px 320px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(3px 3px at 640px 280px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(3px 3px at 780px 220px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(4px 4px at 880px 350px, rgba(255,255,255,0.8), transparent);
+            background-repeat: no-repeat;
+            opacity: 0;
+            animation: twinkle 3s infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0; }
+            100% { opacity: 0.5; }
+        }
+
+        .card {
+            position: relative;
+            background: rgba(20, 10, 25, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 32px;
+            padding: 40px 30px 35px;
+            width: 100%;
+            max-width: 380px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8),
+                        0 0 0 1px rgba(180, 130, 255, 0.15),
+                        inset 0 0 30px rgba(255, 255, 255, 0.02);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .ornament {
+            font-size: 28px;
+            margin-bottom: 5px;
+            opacity: 0.7;
+            letter-spacing: 4px;
+            color: #b392f0;
+            text-shadow: 0 0 8px #b392f060;
+        }
+
+        .nickname {
+            font-size: 26px;
+            font-weight: 600;
+            color: #f0eaff;
+            letter-spacing: 1px;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            text-shadow: 0 0 10px #c0a0ff80;
+        }
+
+        .bio {
+            font-size: 14px;
+            color: #b0a0c0;
+            margin-bottom: 28px;
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        .links {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 14px 20px;
+            color: #e0d5ff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.25s ease;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        .link-btn:hover {
+            background: rgba(180, 130, 255, 0.15);
+            border-color: rgba(180, 130, 255, 0.5);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(180, 130, 255, 0.3);
+        }
+
+        .link-btn .icon {
+            font-size: 20px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #5a4a6a;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 400px) {
+            .card {
+                padding: 30px 20px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="ornament">⛧ ✦ ⛧</div>
+        
+        <div class="nickname">Kuroko</div>
+        <div class="bio">тень, что слушает тишину</div>
+        
+        <div class="links">
+            <!-- Telegram -->
+            <a href="https://t.me/utrula" target="_blank" rel="noopener" class="link-btn">
+                <span class="icon">✉️</span>
+                <span>Telegram</span>
+            </a>
+            
+            <!-- ВКонтакте -->
+            <a href="https://vk.com/d_a_r_k_angel" target="_blank" rel="noopener" class="link-btn">
+                <span class="icon">📘</span>
+                <span>ВКонтакте</span>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/Angel-Dark254?preview=true" target="_blank" rel="noopener" class="link-btn">
+                <span class="icon">🐙</span>
+                <span>GitHub</span>
+            </a>
+        </div>
+        
+        <div class="footer">⛥ choose your path ⛥</div>
+    </div>
+</body>
+</html>
